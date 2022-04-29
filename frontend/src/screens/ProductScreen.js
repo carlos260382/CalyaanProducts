@@ -79,7 +79,7 @@ export default function ProductScreen(props) {
                 <li>Precio : ${product.price}</li>
                 <li>
                   Descripción:
-                  <p>{product.description}</p>
+                  <p className={styles.p}>{product.description}</p>
                 </li>
               </ul>
             </div>
@@ -174,7 +174,7 @@ export default function ProductScreen(props) {
                     <div>
                       <h2>Escribe una reseña</h2>
                     </div>
-                    <div>
+                    <div className= {styles.rating}>
                       <label htmlFor="rating">Rating</label>
                       <select
                         id="rating"
@@ -189,7 +189,7 @@ export default function ProductScreen(props) {
                         <option value="5">5- Excelente</option>
                       </select>
                     </div>
-                    <div>
+                    <div className= {styles.textarea}>
                       <label htmlFor="comment">Comentario</label>
                       <textarea
                         id="comment"

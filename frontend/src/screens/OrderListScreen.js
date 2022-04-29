@@ -4,6 +4,7 @@ import { deleteOrder, listOrders } from '../actions/orderActions';
 import LoadingBox from '../components/LoadingBox';
 import MessageBox from '../components/MessageBox';
 import { ORDER_DELETE_RESET } from '../constants/orderConstants';
+import styles from '../style/OrderListScreen.module.css'
 
 export default function OrderListScreen(props) {
   const sellerMode = props.match.path.indexOf('/seller') >= 0;
@@ -29,7 +30,7 @@ export default function OrderListScreen(props) {
     }
   };
   return (
-    <div>
+    <div className= {styles.container}>
       <h1>Pedidos</h1>
       {loadingDelete && <LoadingBox></LoadingBox>}
       {errorDelete && <MessageBox variant="danger">{errorDelete}</MessageBox>}
@@ -66,7 +67,7 @@ export default function OrderListScreen(props) {
                 <td>
                   <button
                     type="button"
-                    className="small"
+                    className= {styles.btn}
                     onClick={() => {
                       props.history.push(`/order/${order._id}`);
                     }}
@@ -75,7 +76,7 @@ export default function OrderListScreen(props) {
                   </button>
                   <button
                     type="button"
-                    className="small"
+                    className={styles.btn}
                     onClick={() => deleteHandler(order)}
                   >
                     Eliminar

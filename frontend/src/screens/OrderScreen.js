@@ -3,10 +3,9 @@ import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { detailsOrder } from '../actions/orderActions';
-//import { listTurns } from '../actions/turnAction';
-//import { getTurn } from '../actions/turnAction';
 import LoadingBox from '../components/LoadingBox';
 import MessageBox from '../components/MessageBox';
+import styles from '../style/OrderScreen.module.css'
 
 import {
   ORDER_DELIVER_RESET,
@@ -151,21 +150,21 @@ const irMercadoPago=()=> {
   ) : error ? (
     <MessageBox variant="danger">{error}</MessageBox>
   ) : (
-    <div>
+    <div className= {styles.container}>
       <h1>Pedido {order._id}</h1>
       <div className="row top">
         <div className="col-2">
           <ul>
             <li>
               <div className="card card-body">
-                <h2>Realizado</h2>
-                <p>
+                 <p>
                   <strong>Nombre:</strong> {order.shippingAddress.fullName} <br />
                   <strong>Direccion: </strong> {order.shippingAddress.address},
                   {order.shippingAddress.city},{' '}
                   {order.shippingAddress.postalCode},
                   {order.shippingAddress.country}
                 </p>
+                <h2>Realizado</h2>
                 {order.isDelivered ? (
                   <MessageBox variant="success">
                   Servicio Realizado en {order.deliveredAt}
@@ -177,9 +176,8 @@ const irMercadoPago=()=> {
             </li>
             <li>
               <div className="card card-body">
-                <h2>Pago</h2>
                 <p>
-                  <strong>Método:</strong> {order.paymentMethod}
+                  <strong>Método de pago:</strong> {order.paymentMethod}
                 </p>
                 {order.isPaid ? (
                   <MessageBox variant="success">
@@ -192,7 +190,7 @@ const irMercadoPago=()=> {
             </li>
             <li>
               <div className="card card-body">
-                <h2>Servicio Solicitado</h2>
+                <h2>Productos seleccionados</h2>
                 <ul>
                   {order.orderItems.map((item) => (
                     <li key={item.product}>
@@ -222,7 +220,7 @@ const irMercadoPago=()=> {
           </ul>
         </div>
         <div className="col-1">
-          <div className="card card-body">
+          <div className= {styles.check}>
             <ul>
               <li>
                 <h2>Resumen del pedido</h2>
@@ -289,7 +287,7 @@ const irMercadoPago=()=> {
                   </button>
                 </li>
               )} */}
-              <button onClick={irMercadoPago}>Pagar</button>
+              <button onClick={irMercadoPago} className= {styles.btn}>Pagar</button>
               
             </ul>
           </div>

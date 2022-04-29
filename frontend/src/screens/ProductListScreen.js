@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link, useParams } from 'react-router-dom';
+import styles from '../style/ProductListScreen.module.css'
 import {
   createProduct,
   deleteProduct,
@@ -69,10 +70,10 @@ export default function ProductListScreen(props) {
   };
 
   return (
-    <div>
+    <div className={styles.container}>
       <div className="row">
         <h1>Productos</h1>
-        <button type="button" className="primary" onClick={createHandler}>
+         <button className= {styles.btnadd} onClick={createHandler}>
           Crear Producto
         </button>
       </div>
@@ -110,7 +111,7 @@ export default function ProductListScreen(props) {
                   <td>
                     <button
                       type="button"
-                      className="small"
+                      className= {styles.btn}
                       onClick={() =>
                         props.history.push(`/product/${product._id}/edit`)
                       }
@@ -119,7 +120,7 @@ export default function ProductListScreen(props) {
                     </button>
                     <button
                       type="button"
-                      className="small"
+                      className= {styles.btn}
                       onClick={() => deleteHandler(product)}
                     >
                       Eliminar

@@ -6,6 +6,7 @@ import LoadingBox from '../components/LoadingBox';
 import MessageBox from '../components/MessageBox';
 import Rating from '../components/Rating';
 import { PRODUCT_REVIEW_CREATE_RESET } from '../constants/productConstants';
+import styles from '../style/ProductScreen.module.css';
 
 export default function ProductScreen(props) {
   const dispatch = useDispatch();
@@ -57,15 +58,14 @@ export default function ProductScreen(props) {
       ) : (
         <div>
           <Link to="/">Volver al resultado</Link>
-          <div className="row top">
-            <div className="col-2">
+          <div className= {styles.container1}>
+            <div className={styles.col1}>
               <img
-                className="large"
                 src={product.image}
                 alt={product.name}
               ></img>
             </div>
-            <div className="col-1">
+            <div className= {styles.col2}>
               <ul>
                 <li>
                   <h1>{product.name}</h1>
@@ -83,7 +83,7 @@ export default function ProductScreen(props) {
                 </li>
               </ul>
             </div>
-            <div className="col-1">
+            <div className={styles.col3}>
               <div className="card card-body">
                 <ul>
                   <li>
@@ -140,8 +140,8 @@ export default function ProductScreen(props) {
                       <li>
                         <button
                           onClick={addToCartHandler}
-                          className="primary block"
-                        >
+                          className= {styles.btn}
+                          >
                           Agregar al carrito
                         </button>
                       </li>
@@ -151,8 +151,9 @@ export default function ProductScreen(props) {
               </div>
             </div>
           </div>
-          <div>
-            <h2 id="reviews">Reseñas</h2>
+            
+          <div className={styles.reseñas} >
+          <h2>Reseñas</h2>
             {product.reviews.length === 0 && (
               <MessageBox>No hay reseñas</MessageBox>
             )}
@@ -165,9 +166,11 @@ export default function ProductScreen(props) {
                   <p>{review.comment}</p>
                 </li>
               ))}
-              <li>
+              </ul>
+              </div>
+              <div className= {styles.form}>
                 {userInfo ? (
-                  <form className="form" onSubmit={submitHandler}>
+                  <form onSubmit={submitHandler}>
                     <div>
                       <h2>Escribe una reseña</h2>
                     </div>
@@ -196,7 +199,7 @@ export default function ProductScreen(props) {
                     </div>
                     <div>
                       <label />
-                      <button className="primary" type="submit">
+                      <button className= {styles.btnForm} type="submit">
                       Enviar
                       </button>
                     </div>
@@ -214,9 +217,9 @@ export default function ProductScreen(props) {
                     Por favor <Link to="/signin">Inicie sesión</Link> Para escribir una reseña
                   </MessageBox>
                 )}
-              </li>
-            </ul>
-          </div>
+                </div>
+            
+          
         </div>
       )}
     </div>

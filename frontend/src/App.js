@@ -32,6 +32,7 @@ import ChatBox from './components/ChatBox';
 import Navbar from './components/Navbar';
 import MercadoPagoForm from './MercadoPago/components/MercadoPagoForm';
 import Landing from './screens/Landing';
+import styles from './style/Navbar.module.css'
 
 
 function App() {
@@ -57,8 +58,8 @@ function App() {
   return (
     <BrowserRouter>
     <Navbar/>
-      <div className="grid-container">
-        <header className="row">
+      <div >
+        <header className= {styles.container3}>
           <div>
             <button
               type="button"
@@ -261,7 +262,7 @@ function App() {
         </main>
         <footer className="row center">
           {userInfo && !userInfo.isAdmin && <ChatBox userInfo={userInfo} />}
-          <div>Todos los derechos reservados</div>{' '}
+          <div className= {styles.container3}>Todos los derechos reservados</div>{' '}
         </footer>
       </div>
     </BrowserRouter>

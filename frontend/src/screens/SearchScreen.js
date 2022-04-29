@@ -6,7 +6,8 @@ import LoadingBox from '../components/LoadingBox';
 import MessageBox from '../components/MessageBox';
 import Product from '../components/Product';
 import Rating from '../components/Rating';
-import { prices, ratings } from '../utils';
+import { ratings } from '../utils';
+import styles from '../style/SearchScreen.module.css';
 
 export default function SearchScreen(props) {
   const {
@@ -54,7 +55,7 @@ export default function SearchScreen(props) {
   };
   return (
     <div>
-      <div className="row">
+      <div className={styles.container1}>
         {loading ? (
           <LoadingBox></LoadingBox>
         ) : error ? (
@@ -63,23 +64,23 @@ export default function SearchScreen(props) {
           <div>{products.length} Resultados</div>
         )}
         <div>
-          Ordenar por{' '}
+          Ordenar productos por{' '}
           <select
             value={order}
             onChange={(e) => {
               props.history.push(getFilterUrl({ order: e.target.value }));
             }}
           >
-            <option value="newest">LLegadas mas recientes</option>
-            <option value="lowest">Precio: Bajo a Alto</option>
-            <option value="highest">Precio: Alto a Bajo</option>
-            <option value="toprated">Promedio Opiniones del Cliente</option>
+            <option value="newest">Llegadas mas recientes</option>
+            <option value="lowest"> Del precio mas bajo al mas alto</option>
+            <option value="highest">Del precio mas alto al mas bajo</option>
+            <option value="toprated">Por Promedio de opiniones de clientes</option>
           </select>
         </div>
       </div>
-      <div className="row top">
-        <div className="col-1">
-          <h3>Departamento</h3>
+      <div className={styles.container2}>
+        <div className={styles.col1}>
+          <h3>Buscar productos por categoria</h3>
           <div>
             {loadingCategories ? (
               <LoadingBox></LoadingBox>
@@ -92,7 +93,7 @@ export default function SearchScreen(props) {
                     className={'all' === category ? 'active' : ''}
                     to={getFilterUrl({ category: 'all' })}
                   >
-                    Ninguna
+                    Todas
                   </Link>
                 </li>
                 {categories.map((c) => (
@@ -108,7 +109,7 @@ export default function SearchScreen(props) {
               </ul>
             )}
           </div>
-          <div>
+          {/* <div>
             <h3>Precio</h3>
             <ul>
               {prices.map((p) => (
@@ -124,9 +125,9 @@ export default function SearchScreen(props) {
                 </li>
               ))}
             </ul>
-          </div>
+          </div> */}
           <div>
-            <h3>Promedio Opinión del Cliente</h3>
+            <h3>Buscar por opinión del cliente</h3>
             <ul>
               {ratings.map((r) => (
                 <li key={r.name}>
@@ -141,7 +142,7 @@ export default function SearchScreen(props) {
             </ul>
           </div>
         </div>
-        <div className="col-3">
+        <div className={styles.col3}>
           {loading ? (
             <LoadingBox></LoadingBox>
           ) : error ? (
@@ -151,7 +152,7 @@ export default function SearchScreen(props) {
               {products.length === 0 && (
                 <MessageBox>No se Encontro Ningún Producto</MessageBox>
               )}
-              <div className="row center">
+              <div className={styles.cards}>
                 {products.map((product) => (
                   <Product key={product._id} product={product}></Product>
                 ))}

@@ -56,7 +56,7 @@ const handleClickContacto = ()=>{
   }, [dispatch]);
 
 return (
-    <div>
+    <div className={styles.all}>
     <div className={styles.container}>
     <div className={styles.menu}>
     <NavLink  to= "/" onClick = {handleClickInicio}>
@@ -166,6 +166,22 @@ return (
         </div>
       )}
     </div>
+    </div>
+    <div className= {styles.container3}>
+         
+          <div>
+            <button
+              type="button"
+              className="open-sidebar"
+              onClick={() => setSidebarIsOpen(true)}
+            >
+              <i className="fa fa-bars"></i>
+            </button>
+            <NavLink className="brand" to="/">
+              
+            </NavLink>
+          </div>
+
 
     <aside className={sidebarIsOpen ? 'open' : ''}>
           <ul className="categories">
@@ -197,6 +213,7 @@ return (
             )}
           </ul>
         </aside>
+        
 </div>
 </div>
   </div>

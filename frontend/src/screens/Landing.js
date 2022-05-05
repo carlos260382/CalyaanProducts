@@ -55,7 +55,7 @@ return(
 <div className={styles.Card}>
 <NavLink to={`/search/category/${productsBelleza}`}>
 <img src={productBelleza} alt=""/>
-<h2>Servicios de Belleza</h2>
+<h2>Productos de Belleza</h2>
 </NavLink>
 </div>
 </div>
